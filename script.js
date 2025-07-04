@@ -68,13 +68,14 @@ function toggleShift() {
     btn.textContent = shiftData.active ? '🛑 Ukončit směnu' : '🎯 Začít směnu';
     btn.classList.toggle('shift-active', shiftData.active);
     document.getElementById('shiftStatus').textContent = shiftData.active ? 'ANO' : 'NE';
+    localStorage.setItem('shiftData', JSON.stringify(shiftData)); // Ukládání stavu směny
     updateShiftDisplay();
 }
 function resetShift() {
     shiftData = { active: false, profit: 0, sales: 0 };
-    const btn = document.getElementById('shiftBtn');
-    btn.textContent = '🎯 Začít směnu';
-    btn.classList.remove('shift-active');
+    const btn = document.getElementById("shiftBtn");
+    btn.textContent = "🎯 Začít směnu";
+    btn.classList.remove("shift-active");
     updateShiftDisplay();
 }
 function updateShiftDisplay() {
