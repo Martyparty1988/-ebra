@@ -28,7 +28,7 @@ function calculate(markup) {
         return;
     }
 
-    const basePrice = weight * pricePerGram;
+    const basePrice = weight * (pricePerGram / 100);
     const finalPrice = basePrice * (1 + markup / 100);
     const profit = finalPrice - basePrice;
 
@@ -107,7 +107,7 @@ function loadHistory() {
     }
     historyList.innerHTML = calculationsHistory.map(calc => `
         <div class="history-item">
-            <strong>${calc.weight}g × ${calc.pricePerGram} Kč/g (+${calc.markup}%)</strong><br>
+            <strong>${calc.weight}g × ${calc.pricePerGram} Kč/100g (+${calc.markup}%)</strong><br>
             ${calc.basePrice.toFixed(2)} Kč → <strong>${calc.finalPrice.toFixed(2)} Kč</strong><br>
             <small>${calc.date}</small>
         </div>
